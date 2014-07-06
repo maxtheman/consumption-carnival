@@ -1,12 +1,14 @@
 from selenium import webdriver
 import unittest
+import time
 
-class TestLandingPage(unittest.TestCase):
+class TestMainPages(unittest.TestCase):
 
     browser = webdriver.Chrome()
 
     def setUp(self):
         self.browser.get('http://localhost:8000/')
+        time.sleep(3)
 
     def tearDown(self):
         self.browser.quit()
