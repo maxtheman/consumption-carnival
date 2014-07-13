@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css" />
+    {% load static from staticfiles %}
+    <!-- reenable once you clean up staticfiles in settings.py
+    <link rel="stylesheet" href="{% static style.css %}" /> -->
     <title>{% block title %}Consumption Carnival{% endblock %}</title>
 </head>
 
