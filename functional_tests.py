@@ -21,9 +21,9 @@ class TestMainPages(unittest.TestCase):
                 self.name = name
                 self.password = password
 
-        account_info = self.browser.find_element_by_tag_name("account_info")
-        user_name = account_info.find_element_by_tag_name("user_name")
-        password = account_info.find_element_by_tag_name("pass_field")
+        account_info = self.browser.find_element_by_id("account_info")
+        user_name = account_info.find_element_by_id("user_name")
+        password = account_info.find_element_by_id("pass_field")
 
         bob = User("Killer BOB")
 
