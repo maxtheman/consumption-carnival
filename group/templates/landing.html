@@ -8,6 +8,9 @@
 
 <div id="account_info">
     <h2>Login</h2>
+    {% if error %}
+    {{ error }}
+    {% endif %}
     <form method="post">
 
     <input id="user_name" type="text">

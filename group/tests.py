@@ -23,3 +23,5 @@ class LandingViewTester(TestCase):
         self.assertTrue(response.context["username"] != "" , msg="Username is empty")
         self.assertTrue(response.context["password"] != None , msg="Password doesn't exist")
         self.assertTrue(response.context["password"] != "" , msg="Password doesn't exist")
+
+        self.assertIn("Error", response.context["error"])
