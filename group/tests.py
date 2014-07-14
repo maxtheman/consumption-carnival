@@ -5,10 +5,21 @@ import time
 # Create your tests here.
 class LandingViewTester(TestCase):
 
-    def test_landing_page_exists_and_is_using_correct_template(self):
+    client = Client()
 
-        client = Client()
-        response = client.get('')
+    def test_landing_page_exists_and_renders_correctly(self):
 
+        response = self.client.get('')
         self.assertEqual(response.status_code, 200)
-        #not sure if this makes any sense to test --> self.assertContains(response.templates, 'base.html',"Wrong Template rendered")
+        self.assertEqual(["landing.html","base.html"], [t.name for t in response.templates])
+
+    def test_landing_can_return_errors(self):
+
+        response = self.client.post('', {"username": "The Arm", "password": "lauriepalmer1"})
+        code = response.status_code
+
+        self.assertEqual(code, 200, msg="status code is equal to %s, not 200" % code)
+        self.assertTrue(response.context["username"] != None , msg="Username doesn't exist")
+        self.assertTrue(response.context["username"] != "" , msg="Username is empty")
+        self.assertTrue(response.context["password"] != None , msg="Password doesn't exist")
+        self.assertTrue(response.context["password"] != "" , msg="Password doesn't exist")

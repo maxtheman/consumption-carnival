@@ -28,8 +28,24 @@ class TestMainPages(unittest.TestCase):
 
         bob = User("Killer BOB","garmonbozia")
 
+        #There are no errors
+        self.assertNotIn("Error",account_info.text, msg="There is an error present before login attempt")
+
+        #user attempts to login
         user_name.send_keys(bob.name)
         password.send_keys(bob.password, Keys.ENTER)
+
+        #His first attempt fails
+        self.assertIn("Error", account_info.text, msg="There is NOT an error present after login failure")
+
+        #He recalls his password and his login works
+        bob.password = "flowers"
+
+        user_name.send_keys(bob.name)
+        password.send_keys(bob.password, Keys.ENTER)
+
+
+
 
 
 if __name__ == '__main__':
